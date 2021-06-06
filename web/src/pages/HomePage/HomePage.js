@@ -1,5 +1,6 @@
 import UserCard from 'src/components/UserCard/UserCard';
 import UserContracts from 'src/components/UserContracts/UserContracts';
+import ContractListCell from 'src/components/ContractListCell/ContractListCell'
 import DealerCard from 'src/components/DealerCard/DealerCard';
 
 import MainLayout from 'src/layouts/MainLayout/MainLayout';

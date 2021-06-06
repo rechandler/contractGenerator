@@ -24,17 +24,17 @@ const UserCard = () => {
         </div>
         <div className="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
           <div className="px-6 py-5 text-sm font-medium text-center">
-            <span className="text-gray-900">12</span>
+            <span className="text-gray-900">12&nbsp;</span>
             <span className="text-gray-600">Contracts Sold This Month</span>
           </div>
 
           <div className="px-6 py-5 text-sm font-medium text-center">
-            <span className="text-gray-900">4</span>
+            <span className="text-gray-900">4&nbsp;</span>
             <span className="text-gray-600">Open Claims</span>
           </div>
 
           <div className="px-6 py-5 text-sm font-medium text-center">
-            <span className="text-gray-900">122</span>
+            <span className="text-gray-900">122&nbsp;</span>
             <span className="text-gray-600">Warranties Sold</span>
           </div>
         </div>

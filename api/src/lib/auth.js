@@ -1,3 +1,4 @@
+import { db } from 'src/lib/db'
 // Define what you want `currentUser` to return throughout your app. For example,
 // to return a real user from your database, you could do something like:
 //
@@ -97,8 +98,9 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  *   }
  * }
  */
-export const getCurrentUser = async (decoded, { _token, _type }) => {
-  return { ...decoded, roles: parseJWT({ decoded }).roles }
+export const getCurrentUser = async (decoded) => {
+  const user = await db.user.findUnique({ where: { email: decoded.email }, include: {dealerships: true} })
+  return { ...user, ...decoded, roles: parseJWT({ decoded }).roles }
 }
 
 /**

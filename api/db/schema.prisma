@@ -1,20 +1,134 @@
-datasource DS {
-  // optionally set multiple providers
-  // example: provider = ["sqlite", "postgresql"]
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
-// Define your own datamodels here and run `yarn redwood db save` to create
-// migrations for them.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+datasource DS {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  photo       String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  firstName   String       @default("")
+  lastName    String       @default("")
+  contracts   Contract[]
+  dealerships Dealership[]
+}
+
+model Company {
+  id          Int          @id @default(autoincrement())
+  name        String
+  Dealerships Dealership[]
+  Categories  Category[]
+  Models      Model[]
+  Source      Source[]
+  Terms       Term[]
+}
+
+model Dealership {
+  id        Int        @id @default(autoincrement())
+  name      String
+  address   String
+  city      String
+  state     String
+  zip       String
+  din       String
+  phone     String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  users     User[]
+  makes     Make[]
+  Contract  Contract[]
+  Company   Company    @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Contract {
+  id           Int        @id @default(autoincrement())
+  userId       Int?
+  vin          String
+  make         String
+  model        String
+  year         Int
+  ownersName   String     @default("")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  ownersEmail  String     @default("")
+  User         User?      @relation(fields: [userId], references: [id])
+  Dealership   Dealership @relation(fields: [dealershipId], references: [id])
+  notes        Note[]
+  dealershipId Int
+}
+
+model Note {
+  id         Int       @id @default(autoincrement())
+  message    String
+  createdAt  DateTime  @default(now())
+  contractId Int?
+  author     String
+  userId     Int?
+  Contract   Contract? @relation(fields: [contractId], references: [id])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  yearsBack Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Company   Company  @relation(fields: [companyId], references: [id])
+  companyId Int
+
+  Sources Source[]
+  Models  Model[]
+}
+
+model Model {
+  id         Int      @id @default(autoincrement())
+  name       String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  company    Company  @relation(fields: [companyId], references: [id])
+  companyId  Int
+  make       Make     @relation(fields: [makeId], references: [id])
+  makeId     Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([companyId, makeId, name])
+}
+
+model Make {
+  id          Int          @id @default(autoincrement())
+  makeName    String       @unique
+  display     Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  dealerships Dealership[]
+  Models      Model[]
+}
+
+model Source {
+  id         Int      @id @default(autoincrement())
+  name       String
+  company    Company  @relation(fields: [companyId], references: [id])
+  companyId  Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  Terms      Term[]
+}
+
+model Term {
+  id        Int      @id @default(autoincrement())
+  name      String
+  months    Int
+  mileage   Int
+  company   Company  @relation(fields: [companyId], references: [id])
+  companyId Int
+  Sources   Source[]
 }

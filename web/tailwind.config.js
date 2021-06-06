@@ -3,8 +3,11 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
-   theme: {
+  theme: {
     extend: {
+      backgroundImage: {
+        // 'login-image': "url('public/day65-city-road.svg')"
+      },
       colors: {
         'light-blue': colors.lightBlue,
         teal: colors.teal,

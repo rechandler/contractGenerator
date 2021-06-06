@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "contractmanagement-305004",
+  "private_key_id": "152269270f41104d00e71ad66d8e0f065155de35",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHfozEs1EGH2xw\n3HIRI18hfY6oK4sLOq5BcRltQhC2uTmpCa9BaD3IGPDtvDZmLSeCDiQAvytW/6Sh\nt4x2DsQYyrKVnMt7hWBJPtg+jIWGwQ+fEAje84V4WU8b4hGroztatRZrVd4IDUeK\n34Zz/7fO+fSYVmPDZb7tl3lSfkjmQ3/i1YUpVov3Bw/NIRfBZGtDzF5u573O/C34\nn/S/Gv2XBeK3aiUD/4b9W6u0JNol5WucWNEVr/XL+iXyFZ2OOh7aTaYOHJcUOdCg\nOZSS4EwAbfiqKfl4nHbiPhbRPdaHFK3GkxktD/kWTKqGfXb5tUTvjKZ+z6T9+CiE\nfa7Lx3tLAgMBAAECggEAPoFiLcdZXae+3GXVv5Trm5yxc/OgrzYFny+GnfsTLY0/\nib0lEkNNCEL4SiSsjrsbI962XR2IwMt8k8bk1aCuxG3OIp5sCxmxH4H3UzHILH6V\nHGtzvBdk/F5PMRdWHgcY88TFb4AJ/0/Z2KNMh0/aEZmzj3+R5okcl2jcdIJo6Owz\nnaGNp2HQNUIlLk0CDSwHp4fc02EUkZUeKSyxfZ1+9aQOyNM4ViLnt1Ex1GgA4wQc\n6nbTIHKeLQ3TjjfH8F9DNIpOIQeYg3w/Zsu6uDo8kcbrIxSXsgT6adsP9Z6AEhRR\nY3FgU3Ld4RHepqey7zi7xDJic7hlzOSIVJB3Q0m4cQKBgQDoB6cVeI6Cvr2XBBW7\n+m+wBQKdS6TlstAmXyppBKH3aWCSn4WtYnSqC5b7wdDby3HX5hHyRJ8qFr5/Uz/0\nFVaoxRjMEAuPOY9bQzVYWeTEXnLehkI/ilWgHKeCmst1WI5x3PX40WFcA8KSoBvs\nSgXnAisVX+6aTTtCDnOguyrQRwKBgQDcGnMwXu3KpX6gTPG4wThXw1g5bhcJDDfN\nRkrzJt/lTQAX2wci6ZZChhdBV9zKrUVGYjoIykMBa6CG+nOLMztvQNj14JKepJ+z\nYwL4Ojei6R/rKgR3P7qA6ayyrIE4KFxZ4vJhJugFRgHBnvClAV+wjDxB1BDSX2xS\niZPrKPXi3QKBgGAyhAg30kXMlMfejrA/tTxx51KVgQkmaHvwKqIdpJTx4HMJph9r\nWVkCsxcvlMr7fvh2z2v1HVQS1+nr9vDYQ/R2usAnytMXlyLMK3q00k7DpbYyTZcQ\nYE2gc6aHTOEa1PvKE0SUclv2xx2JOepuCiJrWLdk7YSVjoLlgPTbhHWTAoGBAIBq\n2jwllr2+MxQZ8IpoCZSC/816Iux/eWtGEOKvEsC5XU2N2CsReD7V92mDdum1kI6R\nLuUEBXYlsmIubA2SVaIChtNmNIVk7Vx/bzMe3GkrdRkCydo9j3Y5YC5bIYV/Xup+\n1AXE6mhxQQMT1bmgBJGAMIQD09C6Jfw+EtSIcHXtAoGBAMYttvdoBSA6SidHObjm\niId507IdUGhuZmxRAfX1axpmhAEBrB0E9Fu5hBtfv+0EB/qlo4pc4Sbegt+/jp3c\n4IIKohVWpYfgmj52uvsx7h+ljhPAmGgMtifP5DiaFdzFOw54k0SzXBQi7xQFUKMn\n1a6snJljf/rLV5Wq8r/wvkUO\n-----END PRIVATE KEY-----\n",
+  "client_email": "cmd-service-account@contractmanagement-305004.iam.gserviceaccount.com",
+  "client_id": "113798859309426596472",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cmd-service-account%40contractmanagement-305004.iam.gserviceaccount.com"
+}
