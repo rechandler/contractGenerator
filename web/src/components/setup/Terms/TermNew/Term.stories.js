@@ -1,4 +1,4 @@
-import Toc from './Toc'
+import Toc from './Term'
 
 export const generated = () => {
   return <Toc />

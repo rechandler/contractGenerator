@@ -6,18 +6,18 @@ import { navigate, routes } from '@redwoodjs/router'
 const UPDATE_CATEGORY = gql`
   mutation CreateCategoryMutation($input: UpdateCategory!) {
     updateCategory(input: $input) {
-      id,
-      createdAt,
+      id
+      createdAt
     }
   }
 `
 
 const DELETE_CATEGORY = gql`
-mutation DeleteCategoryMutation($id: Int!) {
-  deleteCategory(id: $id) {
-    id
+  mutation DeleteCategoryMutation($id: Int!) {
+    deleteCategory(id: $id) {
+      id
+    }
   }
-}
 `
 
 const CategoryEdit = ({ category }) => {
@@ -25,12 +25,12 @@ const CategoryEdit = ({ category }) => {
   const [deleteCategory, deleteState] = useMutation(DELETE_CATEGORY)
 
   const submit = async (data) => {
-    await updateCategory({ variables: { input: {...data } } })
+    await updateCategory({ variables: { input: { ...data } } })
     navigate(routes.categories())
   }
 
   const handleDelete = async () => {
-    await deleteCategory({ variables: {id: category.id }})
+    await deleteCategory({ variables: { id: category.id } })
     navigate(routes.categories())
   }
 
@@ -40,10 +40,13 @@ const CategoryEdit = ({ category }) => {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1 flex flex-col">
             <div className="px-4 sm:px-0 flex-grow">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">Edit Category</h3>
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
+                Edit Category
+              </h3>
               <p className="mt-1 text-sm text-gray-600">
-                Contract Categories group vehicle together and pair them with only the contracts you choose.
-                This prevents having to assign contracts to each vehicle individually
+                Contract Categories group vehicle together and pair them with
+                only the contracts you choose. This prevents having to assign
+                contracts to each vehicle individually
               </p>
             </div>
             <button
@@ -58,7 +61,8 @@ const CategoryEdit = ({ category }) => {
             <CategoryForm
               category={category}
               loading={updateState.loading || deleteState.loading}
-              submit={submit}/>
+              submit={submit}
+            />
           </div>
         </div>
       </div>

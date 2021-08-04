@@ -11,7 +11,7 @@
     "react": "17.0.1"
   },
   "devDependencies": {
-    "@redwoodjs/core": "^0.30.0"
+    "@redwoodjs/core": "^0.35.2"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config"
@@ -19,5 +19,6 @@
   "engines": {
     "node": ">=14",
     "yarn": ">=1.15"
-  }
+  },
+  "dependencies": {}
 }

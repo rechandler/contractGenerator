@@ -1,6 +1,6 @@
 // var admin = require("firebase-admin");
-const {Storage} = require('@google-cloud/storage');
-const storage = new Storage();
+const { Storage } = require('@google-cloud/storage')
+const storage = new Storage()
 
 import { requireAuth } from 'src/lib/auth'
 
@@ -48,16 +48,18 @@ export const getSignedUrl = async ({ filename }) => {
     action: 'write',
     virtualHostedStyle: true,
     extensionHeaders: {
-      'content-type': 'image/png'
+      'content-type': 'image/png',
     },
     expires: Date.now() + 5 * 60 * 1000, // 5 minutes
-};
+  }
 
   const bucketName = 'contract_management_dev'
   const [signedUrl] = await storage
     .bucket(bucketName)
     .file(filename)
-    .getSignedUrl(options);
+    .getSignedUrl(options)
 
-    return { signedUrl };
+  return { signedUrl }
 }
+
+export const beforeResolver = () => {}

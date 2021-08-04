@@ -3,7 +3,7 @@ export const schema = gql`
     id: Int!
     name: String
     createdAt: DateTime
-    updatedAt: DateTime,
+    updatedAt: DateTime
     yearsBack: Int
   }
 
@@ -25,7 +25,7 @@ export const schema = gql`
 
   input UpdateCategory {
     id: Int!
-    name: String!,
+    name: String!
     yearsBack: Int
   }
 `

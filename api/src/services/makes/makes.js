@@ -1,9 +1,10 @@
 import { db } from 'src/lib/db'
+import { requireAuth } from 'src/lib/auth'
 
 export const makes = () => {
   return db.make.findMany({
     where: { display: true },
-    orderBy: { makeName: 'asc' }
+    orderBy: { makeName: 'asc' },
   })
 }
 
@@ -34,4 +35,8 @@ export const deleteMake = ({ id }) => {
 
 export const allMakes = () => {
   return db.make.findMany()
+}
+
+export const beforeResolver = (rules) => {
+  rules.add(requireAuth)
 }

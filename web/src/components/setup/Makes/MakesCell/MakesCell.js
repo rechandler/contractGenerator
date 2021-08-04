@@ -17,7 +17,5 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ makes }) => {
-  return (
-    <Makes makes={makes} />
-  )
+  return <Makes makes={makes} />
 }

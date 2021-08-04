@@ -99,7 +99,10 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  * }
  */
 export const getCurrentUser = async (decoded) => {
-  const user = await db.user.findUnique({ where: { email: decoded.email }, include: {dealerships: true} })
+  const user = await db.user.findUnique({
+    where: { email: decoded.email },
+    include: { dealerships: true },
+  })
   return { ...user, ...decoded, roles: parseJWT({ decoded }).roles }
 }
 

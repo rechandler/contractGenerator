@@ -11,10 +11,14 @@ export const schema = gql`
 
   type Query {
     terms: [Term!]!
+    term(termId: Int!): Term!
+    termsForCompany: [Term]
   }
 
   type Mutation {
     createTerm(input: CreateTermInput): Term
+    editTerm(input: UpdateTermInput): Term
+    deleteTerm(termId: Int!): Term
   }
 
   input CreateTermInput {
@@ -28,5 +32,6 @@ export const schema = gql`
     months: Int
     mileage: Int
     companyId: Int
+    id: Int
   }
 `

@@ -1,7 +1,7 @@
 import nhtsa from './nhtsa'
 
 const mapping = {
-  nhtsa
+  nhtsa,
 }
 
 export default (response, type) => {

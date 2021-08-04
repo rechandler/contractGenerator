@@ -3,10 +3,10 @@ import Notes from 'src/components/Notes/Notes'
 export const QUERY = gql`
   query NoteQuery($id: Int, $type: String) {
     notes(id: $id, type: $type) {
-      id,
-      createdAt,
-      author,
-      message,
+      id
+      createdAt
+      author
+      message
       userId
     }
   }

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Source" ALTER COLUMN "name" DROP NOT NULL,
+ALTER COLUMN "categoryId" DROP NOT NULL;

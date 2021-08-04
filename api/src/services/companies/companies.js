@@ -14,3 +14,5 @@ export const Company = {
   Source: (_obj, { root }) =>
     db.company.findUnique({ where: { id: root.id } }).Source(),
 }
+
+export const beforeResolver = (rules) => {}

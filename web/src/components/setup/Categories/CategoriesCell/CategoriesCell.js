@@ -4,8 +4,8 @@ import Categories from '../Categories/Categories'
 export const QUERY = gql`
   query CategoriesQuery {
     categoriesForCompany {
-      id,
-      name,
+      id
+      name
       yearsBack
     }
   }
@@ -18,9 +18,12 @@ export const Empty = () => {
     <div className="col-span-9">
       <div className="flex flex-auto justify-center content-center h-full">
         <div className="self-center">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">No Categories</h3>
+          <h3 className="text-lg leading-6 font-medium text-gray-900">
+            No Categories
+          </h3>
           <p className="mt-1 max-w-2xl text-sm text-gray-500">
-            You haven't configured any categories yet. Categories help classify your contracts. Go ahead and create one now!
+            You haven't configured any categories yet. Categories help classify
+            your contracts. Go ahead and create one now!
           </p>
           <div className="flex flex-auto justify-center">
             <button
@@ -40,5 +43,5 @@ export const Empty = () => {
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ categoriesForCompany }) => {
-  return <Categories  categories={categoriesForCompany} />
+  return <Categories categories={categoriesForCompany} />
 }

@@ -1,4 +1,4 @@
-import MainLayout from 'src/layouts/MainLayout/MainLayout';
+import MainLayout from 'src/layouts/MainLayout/MainLayout'
 import ContractGenerator from 'src/components/ContractGenerator/ContractGenerator'
 import MakesCell from 'src/components/setup/Makes/MakesCell/MakesCell'
 import ModelsCell from 'src/components/setup/Makes/ModelsCell/ModelsCell'
@@ -8,27 +8,40 @@ import NewCategory from 'src/components/setup/Categories/NewCategory/NewCategory
 import CategoryCell from 'src/components/setup/Categories/CategoryCell/CategoryCell'
 import ContractsCell from 'src/components/setup/Contracts/ContractsCell/ContractsCell'
 import ContractNew from 'src/components/setup/Contracts/ContractNew/ContractNew'
-import TocNew from 'src/components/setup/Toc/Toc'
+import TermsCell from 'src/components/setup/Terms/TermsCell/TermsCell'
+import TermNew from 'src/components/setup/Terms/TermNew/Term'
+import TermCell from 'src/components/setup/Terms/TermCell/TermCell'
+import ContractBasicInfoCell from 'src/components/setup/Contracts/ContractBasicInfoCell/ContractBasicInfoCell'
+import PricingStructureCell from 'src/components/setup/Contracts/PricingStructureCell/PricingStructureCell'
 
-import {
-  BellIcon,
-  CogIcon,
-  CreditCardIcon,
-  KeyIcon,
-  UserCircleIcon,
-  ViewGridAddIcon,
-} from '@heroicons/react/outline'
-import { useLocation, useParams} from '@redwoodjs/router'
-
+import { CogIcon, KeyIcon, UserCircleIcon } from '@heroicons/react/outline'
+import { useLocation, useParams } from '@redwoodjs/router'
 
 const subNavigation = [
-  { name: 'Contract Categories', href: '/contract-setup/categories', icon: UserCircleIcon, current: false},
-  { name: 'Makes and Models', href: '/contract-setup/make', icon: UserCircleIcon, current: false },
-  { name: 'Contracts', href: '/contract-setup/contracts', icon: CogIcon, current: false },
-  { name: 'Password', href: '#', icon: KeyIcon, current: false },
-  { name: 'Notifications', href: '#', icon: BellIcon, current: false },
-  { name: 'Billing', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Integrations', href: '#', icon: ViewGridAddIcon, current: false },
+  {
+    name: 'Contract Categories',
+    href: '/contract-setup/categories',
+    icon: UserCircleIcon,
+    current: false,
+  },
+  {
+    name: 'Makes and Models',
+    href: '/contract-setup/make',
+    icon: UserCircleIcon,
+    current: false,
+  },
+  {
+    name: 'Contracts',
+    href: '/contract-setup/contracts',
+    icon: CogIcon,
+    current: false,
+  },
+  {
+    name: 'Terms and Conditions',
+    href: '/contract-setup/terms',
+    icon: KeyIcon,
+    current: false,
+  },
 ]
 
 function classNames(...classes) {
@@ -37,49 +50,68 @@ function classNames(...classes) {
 
 const ContractSetupPage = ({ categoryId }) => {
   const { pathname } = useLocation()
-  const { makeName, modelName } = useParams()
+  const { makeName, modelName, termId, contractId } = useParams()
 
   let CurrentForm, currentFormName, params
-  switch(true) {
+  switch (true) {
     case /^\/contract-setup\/categories$/.test(pathname):
       CurrentForm = CategoriesCell
       currentFormName = 'Contract Categories'
-      break;
+      break
     case /^\/contract-setup\/make$/.test(pathname):
       CurrentForm = MakesCell
       currentFormName = 'Makes and Models'
-      break;
+      break
     case /^\/contract-setup\/make\/.*\/models\/.*$/.test(pathname):
       CurrentForm = ModelCell
       currentFormName = 'Makes and Models'
-      params = { input: {makeName, name: modelName} }
-      break;
+      params = { input: { makeName, name: modelName } }
+      break
     case /^\/contract-setup\/make\/.*\/models$/.test(pathname):
       CurrentForm = ModelsCell
       currentFormName = 'Makes and Models'
-      params = { input: {makeName} }
-      break;
+      params = { input: { makeName } }
+      break
     case /^\/contract-setup\/contracts$/.test(pathname):
       CurrentForm = ContractsCell
       currentFormName = 'Contracts'
-      break;
+      break
     case /^\/contract-setup\/contracts\/new$/.test(pathname):
       CurrentForm = ContractNew
       currentFormName = 'Contracts'
-      break;
+      break
+    case /^\/contract-setup\/contracts\/.*\/basic_info$/.test(pathname):
+      CurrentForm = ContractBasicInfoCell
+      currentFormName = 'Contracts'
+      params = { contractId }
+      break
+    case /^\/contract-setup\/contracts\/.*\/pricing_structure$/.test(pathname):
+      CurrentForm = PricingStructureCell
+      currentFormName = 'Contracts'
+      params = { contractId }
+      break
     case /^\/contract-setup\/categories\/new$/.test(pathname):
       CurrentForm = NewCategory
       currentFormName = 'Contract Categories'
-      break;
-    case /^\/contract-setup\/categories\/edit\/*/.test(pathname):
+      break
+    case /^\/contract-setup\/categories\/.*\/edit$/.test(pathname):
       CurrentForm = CategoryCell
       currentFormName = 'Contract Categories'
       params = { categoryId: categoryId }
-      break;
-    case /^\/contract-setup\/toc\/new$/.test(pathname):
-      CurrentForm = TocNew
-      currentFormName = 'Contracts'
-      break;
+      break
+    case /^\/contract-setup\/terms$/.test(pathname):
+      CurrentForm = TermsCell
+      currentFormName = 'Terms and Conditions'
+      break
+    case /^\/contract-setup\/terms\/new$/.test(pathname):
+      CurrentForm = TermNew
+      currentFormName = 'Terms and Conditions'
+      break
+    case /^\/contract-setup\/terms\/.*\/edit$/.test(pathname):
+      CurrentForm = TermCell
+      currentFormName = 'Terms and Conditions'
+      params = { termId: termId }
+      break
     default:
       CurrentForm = ContractGenerator
   }

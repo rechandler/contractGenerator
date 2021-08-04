@@ -1,19 +1,22 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 import {
   BellIcon,
   CogIcon,
   CreditCardIcon,
   KeyIcon,
-  MenuIcon,
   UserCircleIcon,
   ViewGridAddIcon,
-  XIcon,
 } from '@heroicons/react/outline'
-import { Disclosure, Menu, Switch, Transition } from '@headlessui/react'
+import { Switch } from '@headlessui/react'
 
 const subNavigation = [
-  { name: 'Make', href: '/contract-setup/make', icon: UserCircleIcon, current: true },
+  {
+    name: 'Make',
+    href: '/contract-setup/make',
+    icon: UserCircleIcon,
+    current: true,
+  },
   { name: 'Account', href: '#', icon: CogIcon, current: false },
   { name: 'Password', href: '#', icon: KeyIcon, current: false },
   { name: 'Notifications', href: '#', icon: BellIcon, current: false },
@@ -70,20 +73,30 @@ const ContractGenerator = () => {
             </nav>
           </aside>
 
-          <form className="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
+          <form
+            className="divide-y divide-gray-200 lg:col-span-9"
+            action="#"
+            method="POST"
+          >
             {/* Profile section */}
             <div className="py-6 px-4 sm:p-6 lg:pb-8">
               <div>
-                <h2 className="text-lg leading-6 font-medium text-gray-900">Profile</h2>
+                <h2 className="text-lg leading-6 font-medium text-gray-900">
+                  Profile
+                </h2>
                 <p className="mt-1 text-sm text-gray-500">
-                  This information will be displayed publicly so be careful what you share.
+                  This information will be displayed publicly so be careful what
+                  you share.
                 </p>
               </div>
 
               <div className="mt-6 flex flex-col lg:flex-row">
                 <div className="flex-grow space-y-6">
                   <div>
-                    <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="username"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Username
                     </label>
                     <div className="mt-1 rounded-md shadow-sm flex">
@@ -102,7 +115,10 @@ const ContractGenerator = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="about"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       About
                     </label>
                     <div className="mt-1">
@@ -121,7 +137,10 @@ const ContractGenerator = () => {
                 </div>
 
                 <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
-                  <p className="text-sm font-medium text-gray-700" aria-hidden="true">
+                  <p
+                    className="text-sm font-medium text-gray-700"
+                    aria-hidden="true"
+                  >
                     Photo
                   </p>
                   <div className="mt-1 lg:hidden">
@@ -130,7 +149,11 @@ const ContractGenerator = () => {
                         className="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
                         aria-hidden="true"
                       >
-                        <img className="rounded-full h-full w-full" src={user.imageUrl} alt="" />
+                        <img
+                          className="rounded-full h-full w-full"
+                          src={user.imageUrl}
+                          alt=""
+                        />
                       </div>
                       <div className="ml-5 rounded-md shadow-sm">
                         <div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-light-blue-500">
@@ -153,7 +176,11 @@ const ContractGenerator = () => {
                   </div>
 
                   <div className="hidden relative rounded-full overflow-hidden lg:block">
-                    <img className="relative rounded-full w-40 h-40" src={user.imageUrl} alt="" />
+                    <img
+                      className="relative rounded-full w-40 h-40"
+                      src={user.imageUrl}
+                      alt=""
+                    />
                     <label
                       htmlFor="user-photo"
                       className="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100"
@@ -173,7 +200,10 @@ const ContractGenerator = () => {
 
               <div className="mt-6 grid grid-cols-12 gap-6">
                 <div className="col-span-12 sm:col-span-6">
-                  <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="first_name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     First name
                   </label>
                   <input
@@ -186,7 +216,10 @@ const ContractGenerator = () => {
                 </div>
 
                 <div className="col-span-12 sm:col-span-6">
-                  <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="last_name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Last name
                   </label>
                   <input
@@ -199,7 +232,10 @@ const ContractGenerator = () => {
                 </div>
 
                 <div className="col-span-12">
-                  <label htmlFor="url" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="url"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     URL
                   </label>
                   <input
@@ -211,7 +247,10 @@ const ContractGenerator = () => {
                 </div>
 
                 <div className="col-span-12 sm:col-span-6">
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Company
                   </label>
                   <input
@@ -229,19 +268,29 @@ const ContractGenerator = () => {
             <div className="pt-6 divide-y divide-gray-200">
               <div className="px-4 sm:px-6">
                 <div>
-                  <h2 className="text-lg leading-6 font-medium text-gray-900">Privacy</h2>
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                    Privacy
+                  </h2>
                   <p className="mt-1 text-sm text-gray-500">
                     Ornare eu a volutpat eget vulputate. Fringilla commodo amet.
                   </p>
                 </div>
                 <ul className="mt-2 divide-y divide-gray-200">
-                  <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                  <Switch.Group
+                    as="li"
+                    className="py-4 flex items-center justify-between"
+                  >
                     <div className="flex flex-col">
-                      <Switch.Label as="p" className="text-sm font-medium text-gray-900" passive>
+                      <Switch.Label
+                        as="p"
+                        className="text-sm font-medium text-gray-900"
+                        passive
+                      >
                         Available to hire
                       </Switch.Label>
                       <Switch.Description className="text-sm text-gray-500">
-                        Nulla amet tempus sit accumsan. Aliquet turpis sed sit lacinia.
+                        Nulla amet tempus sit accumsan. Aliquet turpis sed sit
+                        lacinia.
                       </Switch.Description>
                     </div>
                     <Switch
@@ -262,13 +311,21 @@ const ContractGenerator = () => {
                       />
                     </Switch>
                   </Switch.Group>
-                  <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                  <Switch.Group
+                    as="li"
+                    className="py-4 flex items-center justify-between"
+                  >
                     <div className="flex flex-col">
-                      <Switch.Label as="p" className="text-sm font-medium text-gray-900" passive>
+                      <Switch.Label
+                        as="p"
+                        className="text-sm font-medium text-gray-900"
+                        passive
+                      >
                         Make account private
                       </Switch.Label>
                       <Switch.Description className="text-sm text-gray-500">
-                        Pharetra morbi dui mi mattis tellus sollicitudin cursus pharetra.
+                        Pharetra morbi dui mi mattis tellus sollicitudin cursus
+                        pharetra.
                       </Switch.Description>
                     </div>
                     <Switch
@@ -289,13 +346,21 @@ const ContractGenerator = () => {
                       />
                     </Switch>
                   </Switch.Group>
-                  <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                  <Switch.Group
+                    as="li"
+                    className="py-4 flex items-center justify-between"
+                  >
                     <div className="flex flex-col">
-                      <Switch.Label as="p" className="text-sm font-medium text-gray-900" passive>
+                      <Switch.Label
+                        as="p"
+                        className="text-sm font-medium text-gray-900"
+                        passive
+                      >
                         Allow commenting
                       </Switch.Label>
                       <Switch.Description className="text-sm text-gray-500">
-                        Integer amet, nunc hendrerit adipiscing nam. Elementum ame
+                        Integer amet, nunc hendrerit adipiscing nam. Elementum
+                        ame
                       </Switch.Description>
                     </div>
                     <Switch
@@ -316,9 +381,16 @@ const ContractGenerator = () => {
                       />
                     </Switch>
                   </Switch.Group>
-                  <Switch.Group as="li" className="py-4 flex items-center justify-between">
+                  <Switch.Group
+                    as="li"
+                    className="py-4 flex items-center justify-between"
+                  >
                     <div className="flex flex-col">
-                      <Switch.Label as="p" className="text-sm font-medium text-gray-900" passive>
+                      <Switch.Label
+                        as="p"
+                        className="text-sm font-medium text-gray-900"
+                        passive
+                      >
                         Allow mentions
                       </Switch.Label>
                       <Switch.Description className="text-sm text-gray-500">
@@ -362,7 +434,6 @@ const ContractGenerator = () => {
             </div>
           </form>
         </div>
-
       </div>
     </div>
   )

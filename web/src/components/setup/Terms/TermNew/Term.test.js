@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing'
 
-import Toc from './Toc'
+import Toc from './Term'
 
 describe('Toc', () => {
   it('renders successfully', () => {

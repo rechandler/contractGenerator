@@ -22,21 +22,25 @@ const Routes = () => {
         <Route path="/contract-setup" page={ContractSetupPage} name="contractSetup" />
         <Route path="/contract-setup/categories" page={ContractSetupPage} name="categories" />
         <Route path="/contract-setup/categories/new" page={ContractSetupPage} name="categoryNew" />
-        <Route path="/contract-setup/categories/edit/{categoryId:Int}" page={ContractSetupPage} name="categoryEdit" />
+        <Route path="/contract-setup/categories/{categoryId:Int}/edit" page={ContractSetupPage} name="categoryEdit" />
         <Route path="/contract-setup/make" page={ContractSetupPage} name="contractGeneratorMake" />
         <Route path="/contract-setup/make/{makeName:String}/models" page={ContractSetupPage} name="contractGeneratorModels" />
         <Route path="/contract-setup/make/{makeName:String}/models/{modelName:String}" page={ContractSetupPage} name="contractGeneratorModel" />
         <Route path="/contract-setup/account" page={ContractSetupPage} name="contractGeneratorAccount" />
         <Route path="/contract-setup/contracts" page={ContractSetupPage} name="contractGeneratorContract" />
         <Route path="/contract-setup/contracts/new" page={ContractSetupPage} name="contractGeneratorContractNew" />
-        <Route path="/contract-setup/toc/new" page={ContractSetupPage} name="contractGeneratorTocNew" />
+        <Route path="/contract-setup/contracts/{contractId:Int}/basic_info" page={ContractSetupPage} name="contractGeneratorContractBasicInfo" />
+        <Route path="/contract-setup/contracts/{contractId:Int}/pricing_structure" page={ContractSetupPage} name="contractGeneratorContractPricingStructure" />
+
+        <Route path="/contract-setup/terms" page={ContractSetupPage} name="contractGeneratorTerms" />
+        <Route path="/contract-setup/terms/new" page={ContractSetupPage} name="contractGeneratorTermNew" />
+        <Route path="/contract-setup/terms/{termId:Int}/edit" page={ContractSetupPage} name="contractGeneratorTermEdit" />
 
         {/* admin routes  */}
         <Route path="/admin/makes/new" page={AdminMakePage} name="newMake" />
         <Route path="/admin/makes/{id:Int}/edit" page={AdminEditMakePage} name="editMake" />
         <Route path="/admin/makes/{id:Int}" page={AdminMakePage} name="make" />
         <Route path="/admin/makes" page={AdminMakesPage} name="makes" />
-
       </Private>
       <Route notfound page={NotFoundPage} />
     </Router>

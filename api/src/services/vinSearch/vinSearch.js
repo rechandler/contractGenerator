@@ -9,7 +9,7 @@ const getVehicle = async (vin) => {
   var options = {
     method: 'GET',
     url: `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/${vin}`,
-    params: {format: 'json'}
+    params: { format: 'json' },
   }
 
   try {
@@ -20,3 +20,5 @@ const getVehicle = async (vin) => {
     console.log(exception)
   }
 }
+
+export const beforeResolver = () => {}

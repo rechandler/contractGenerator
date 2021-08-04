@@ -23,11 +23,11 @@ export const schema = gql`
   }
 
   input ModelInput {
-    name: String,
+    name: String
   }
 
   input ModelSearch {
-    name: String,
+    name: String
     makeName: String
   }
 `

@@ -3,7 +3,7 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
-datasource DS {
+datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
@@ -84,7 +84,7 @@ model Category {
   Company   Company  @relation(fields: [companyId], references: [id])
   companyId Int
 
-  Sources Source[]
+  sources Source[]
   Models  Model[]
 }
 
@@ -114,12 +114,14 @@ model Make {
 }
 
 model Source {
-  id         Int      @id @default(autoincrement())
-  name       String
-  company    Company  @relation(fields: [companyId], references: [id])
-  companyId  Int
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  id        Int      @id @default(autoincrement())
+  name      String?
+  company   Company  @relation(fields: [companyId], references: [id])
+  companyId Int
+  active    Boolean  @default(false)
+  states    String[]
+
+  categories Category[]
   Terms      Term[]
 }
 

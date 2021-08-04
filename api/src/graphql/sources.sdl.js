@@ -1,19 +1,27 @@
 export const schema = gql`
   type Source {
     id: Int!
-    name: String!
+    name: String
     company: Company!
     companyId: Int!
-    category: Category!
-    categoryId: Int!
+    categories: JSON
+    states: JSON
   }
 
   type Query {
     sources: [Source!]!
+    source(id: Int): Source
   }
 
   type Mutation {
-    createSource: [Source]
+    createSource: Source
+    createBasicInfo(id: Int, input: CreateBasicInfoInput): Source
+  }
+
+  input CreateBasicInfoInput {
+    name: String
+    categories: [Int]
+    states: [String]
   }
 
   input CreateSourceInput {

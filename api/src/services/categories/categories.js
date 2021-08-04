@@ -1,61 +1,55 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 import { getCompanyId } from 'src/lib/contextHelpers'
-import { ForbiddenError } from '@redwoodjs/api'
 
 export const category = async ({ categoryId }) => {
-  requireAuth();
-  const category = await db.category.findUnique({where: {id: categoryId}})
-
+  const category = await db.category.findUnique({ where: { id: categoryId } })
   return category
 }
 
 export const categoriesForCompany = async () => {
-  requireAuth()
   const companyId = await getCompanyId()
   const company = await db.company.findUnique({
-    where: {id: companyId},
+    where: { id: companyId },
     include: {
       Categories: {
         orderBy: {
-          createdAt: 'asc'
-        }
-      }
-    }
+          createdAt: 'asc',
+        },
+      },
+    },
   })
 
   return company.Categories
 }
 
-export const updateCategory = async ({input}) => {
-  requireAuth()
-
+export const updateCategory = async ({ input }) => {
   return await db.category.update({
-    where: {id: input.id},
-    data: {...input}
-  });
+    where: { id: input.id },
+    data: { ...input },
+  })
 }
 
-export const createCategory = async ({input}) => {
-  requireAuth()
+export const createCategory = async ({ input }) => {
   const companyId = await getCompanyId()
-
   return await db.company.update({
     where: {
-      id: companyId
+      id: companyId,
     },
     data: {
       Categories: {
-        create: {...input}
-      }
-    }
+        create: { ...input },
+      },
+    },
   })
 }
 
 export const deleteCategory = async ({ id }) => {
-  requireAuth()
-
   return await db.category.delete({
-    where: {id: id}
+    where: { id },
   })
+}
+
+export const beforeResolver = (rules) => {
+  rules.add(requireAuth)
 }

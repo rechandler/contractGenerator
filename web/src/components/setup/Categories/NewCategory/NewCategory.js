@@ -4,19 +4,19 @@ import { useMutation } from '@redwoodjs/web'
 import { navigate, routes } from '@redwoodjs/router'
 
 const CREATE_NOTE = gql`
-  mutation CreateCategoryMutation($input: CategoryInput!) {
+  mutation yeet($input: CategoryInput!) {
     createCategory(input: $input) {
-      id,
-      createdAt,
+      id
+      createdAt
     }
   }
 `
 
 const NewCategory = () => {
-  const [create, { loading, error, data}] = useMutation(CREATE_NOTE)
+  const [create, { loading, error, data }] = useMutation(CREATE_NOTE)
 
   const submit = async (data) => {
-    await create({ variables: { input: {...data } } })
+    await create({ variables: { input: { ...data } } })
     navigate(routes.categories())
   }
 
@@ -26,17 +26,18 @@ const NewCategory = () => {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">New Category</h3>
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
+                New Category
+              </h3>
               <p className="mt-1 text-sm text-gray-600">
-                Contract Categories group vehicle together and pair them with only the contracts you choose.
-                This prevents having to assign contracts to each vehicle individually
+                Contract Categories group vehicle together and pair them with
+                only the contracts you choose. This prevents having to assign
+                contracts to each vehicle individually
               </p>
             </div>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <CategoryForm
-              loading={loading}
-              submit={submit}/>
+            <CategoryForm loading={loading} submit={submit} />
           </div>
         </div>
       </div>

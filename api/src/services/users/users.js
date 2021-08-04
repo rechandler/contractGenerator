@@ -2,7 +2,6 @@ import { requireAuth } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const users = () => {
-  requireAuth()
   return db.user.findMany()
 }
 
@@ -14,6 +13,9 @@ export const User = {
 }
 
 export const currentUser = () => {
-  requireAuth()
   return context.currentUser
+}
+
+export const beforeResolver = (rules) => {
+  rules.add(requireAuth)
 }

@@ -11,3 +11,9 @@
 /**
  * END --- TAILWIND GENERATOR EDIT
  */
+
+ .price_list:not(:first-child) {
+  margin-top: 15px;
+  padding: 10px;
+}
+

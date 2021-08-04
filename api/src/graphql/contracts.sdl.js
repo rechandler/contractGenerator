@@ -15,7 +15,7 @@ export const schema = gql`
 
   type Query {
     contracts: [Contract!]!
-    contractsByUser(userId: Int): [Contract]
+    contractsByUser: [Contract]
     contract(id: Int): Contract
   }
 

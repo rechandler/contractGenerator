@@ -3,14 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const vinFieldSlices = createSlice({
   name: 'vinFields',
   initialState: {
-    vehicleValues: {}
+    vehicleValues: {},
   },
   reducers: {
     addVehicleValues: (state, action) => {
-      const payload = action.payload;
-      state.vehicleValues = {...state.vehicleValues, ...payload}
-    }
-  }
+      const payload = action.payload
+      state.vehicleValues = { ...state.vehicleValues, ...payload }
+    },
+  },
 })
 
 // Extract the action creators object and the reducer

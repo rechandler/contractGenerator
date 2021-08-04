@@ -1,7 +1,7 @@
 import { db } from 'src/lib/db'
 import { getCompany } from 'src/lib/contextHelpers'
 import nhtsaApi, { paths } from 'src/lib/nhtsaApi'
-import { make } from '../makes/makes'
+import { requireAuth } from 'src/lib/auth'
 
 /**
  * I really kinda hate this method. Essentially what we do is
@@ -13,21 +13,21 @@ import { make } from '../makes/makes'
  * @returns
  */
 export const models = async ({ input }) => {
-  const {makeName} = input
+  const { makeName } = input
   const company = await getCompany()
 
   const apiResults = await nhtsaApi.get(paths.makes, { makeName: makeName })
   const results = translate(apiResults, makeName)
 
-  const make = await db.make.findUnique({where: { makeName: makeName }})
+  const make = await db.make.findUnique({ where: { makeName: makeName } })
   const dbResults = await db.model.findMany({
     where: {
       companyId: company.id,
-      makeId: make.id
+      makeId: make.id,
     },
     include: {
-      category: true
-    }
+      category: true,
+    },
   })
 
   const dbHash = dbResults.reduce((acc, model) => {
@@ -35,31 +35,30 @@ export const models = async ({ input }) => {
     return acc
   }, {})
 
-
   // We need to merge api results with db results.
-  return results.map(model => {
+  return results.map((model) => {
     return dbHash[model.name] ? dbHash[model.name] : model
   })
 }
 
 export const model = async ({ input }) => {
-  const company = await getCompany();
+  const company = await getCompany()
   const companyId = company.id
   const { makeName, name } = input
   const decodedName = decodeURI(name)
-  const make = await db.make.findUnique({where: { makeName: makeName }})
+  const make = await db.make.findUnique({ where: { makeName: makeName } })
 
   const result = await db.model.findUnique({
     where: {
       companyId_makeId_name: {
         companyId,
         makeId: make.id,
-        name: decodedName
-      }
+        name: decodedName,
+      },
     },
     include: {
-      category: true
-    }
+      category: true,
+    },
   })
 
   return result || { name: decodedName }
@@ -73,32 +72,32 @@ export const model = async ({ input }) => {
  */
 export const updateModelCategoryInput = async ({ input }) => {
   const company = await getCompany()
-  const make = await db.make.findUnique({where: { makeName: input.makeName }})
+  const make = await db.make.findUnique({ where: { makeName: input.makeName } })
 
   const models = Array.isArray(input.models) ? input.models : [input.models]
 
   return await db.$transaction(
-    models.map(model => {
+    models.map((model) => {
       return db.model.upsert({
         where: {
           companyId_makeId_name: {
             companyId: company.id,
             makeId: make.id,
-            name: model.name
-          }
+            name: model.name,
+          },
         },
         update: {
-          categoryId: input.categoryId
+          categoryId: input.categoryId,
         },
         create: {
           companyId: company.id,
           makeId: make.id,
           name: model.name,
-          categoryId: input.categoryId
+          categoryId: input.categoryId,
         },
         include: {
-          category: true
-        }
+          category: true,
+        },
       })
     })
   )
@@ -107,15 +106,19 @@ export const updateModelCategoryInput = async ({ input }) => {
 export const deleteModelCategory = async ({ id }) => {
   return await db.model.delete({
     where: {
-      id: id
-    }
+      id: id,
+    },
   })
 }
 
 const translate = (apiModels, makeName) => {
   return apiModels
-    .filter(model => model.Make_Name === makeName)
-    .map(model => ({
-      name: model.Model_Name
+    .filter((model) => model.Make_Name === makeName)
+    .map((model) => ({
+      name: model.Model_Name,
     }))
+}
+
+export const beforeResolver = (rules) => {
+  rules.add(requireAuth)
 }
